@@ -1,0 +1,14 @@
+<div class="wrapper" cdkDrag>
+  <div class="header" cdkDragHandle>
+
+  </div>
+
+  <div class="body">
+    <ul>
+      <li *ngFor="let item of tabElms | async">
+        <span>{{ item?.position }}</span><span>{{ item?.name }}</span>
+      </li>
+    </ul>
+  </div>
+
+</div>

@@ -1,0 +1,20 @@
+.menu-container {
+}
+
+.menu-list {
+  display: flex;
+
+  &-item {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  &-row {
+    flex-direction: row;
+    justify-content: center;
+    .menu-list-item:not(:first-child) {
+      margin-left: 20px;
+    }
+  }
+  &-column { flex-direction: column }
+}

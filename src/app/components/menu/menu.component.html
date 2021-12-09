@@ -1,0 +1,8 @@
+<div class="menu-container">
+  <ul class="menu-list"
+      [ngClass]="isColumn ? 'menu-list-column' : 'menu-list-row'">
+    <li *ngFor="let item of menuList" class="menu-list-item">
+      <button mat-stroked-button (click)="onClick(item?.id)"><span>{{ item?.title }}</span></button>
+    </li>
+  </ul>
+</div>
