@@ -11,19 +11,10 @@ import {BehaviorSubject} from "rxjs";
 })
 export class TodoListComponent implements OnInit {
   ELEMENT_DATA  = [
-    {position: 1, name: 'Hydrogen'},
-    {position: 2, name: 'Helium'},
-    {position: 3, name: 'Lithium'},
-    {position: 4, name: 'Beryllium'},
-    {position: 5, name: 'Boron'},
-    {position: 6, name: 'Carbon'},
-    {position: 7, name: 'Nitrogen'},
-    {position: 8, name: 'Oxygen'},
-    {position: 9, name: 'Fluorine'},
-    {position: 10, name: 'Neon'},
+    {position: 1, name: 'Hydrogen', completed: false, id: 'test'},
   ];
   displayedColumns: string[] = ['position', 'name'];
-  tabElms = new BehaviorSubject(this.ELEMENT_DATA);
+  tabElms = new BehaviorSubject<any>(this.ELEMENT_DATA);
   dataSource = this.tabElms;
   constructor(public fireservices: AngularFirestore, public data: DataService) { }
 
@@ -44,7 +35,7 @@ export class TodoListComponent implements OnInit {
             const elements:any = [];
             res.forEach((el: any) => {
               elements.push(
-                {position: counter, name: el.title}
+                {position: counter, name: el.title, completed: el.completed, id: el.id}
               )
               counter++;
             })
@@ -53,6 +44,10 @@ export class TodoListComponent implements OnInit {
         )
       }
     })
+  }
+
+  onCheck = (id: string) => {
+    console.log('Event: ', id)
   }
 
 }
